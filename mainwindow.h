@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMenuBar>
 
 class MainWindow : public QMainWindow
 {
@@ -10,6 +11,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+private:
+    addMenus();
+
+private:
+    QMenu *menu1, *menu2;
 };
 
 #endif // MAINWINDOW_H

@@ -4,9 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += core gui widgets
 
 TARGET = Chess
 DESTDIR = $$PWD/
@@ -14,6 +12,22 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    BoardWidget.cpp \
+    Board.cpp \
+    BoardScene.cpp \
+    BoardView.cpp \
+    Field.cpp \
+    Pawn.cpp \
+    IFigure.cpp \
+    Figure.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    BoardWidget.h \
+    Board.h \
+    BoardScene.h \
+    BoardView.h \
+    Field.h \
+    Pawn.h \
+    IFigure.h \
+    Figure.h
