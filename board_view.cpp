@@ -1,14 +1,12 @@
-#include "BoardView.h"
+#include "board_view.h"
 #include <QDebug>
 #include <QMouseEvent>
-#include "IFigure.h"
-#include "Field.h"
+#include "figure.h"
+#include "field.h"
 
-BoardView::BoardView(Board *b, BoardScene *s) : QGraphicsView()
+BoardView::BoardView(QGraphicsScene *scene) : QGraphicsView()
 {
-    Brd = b;
-    Scene = s;
-    setScene(Scene);
+    setScene(scene);
     setBackgroundBrush(QBrush(Qt::white, Qt::SolidPattern));
 
     setFixedSize(300, 300);
@@ -16,7 +14,7 @@ BoardView::BoardView(Board *b, BoardScene *s) : QGraphicsView()
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    ActiveFigure = 0;
+    m_activeFigure = 0;
 }
 
 void BoardView::changeFixedSize(int size)
@@ -32,20 +30,20 @@ void BoardView::mousePressEvent(QMouseEvent *event)
 
     if (pressedItem != 0)
     {
-        IFigure *fig = dynamic_cast<IFigure*>(pressedItem);
-        Field *fld = dynamic_cast<Field*>(pressedItem);
-
-        if (fig != 0)
+        Figure *fig = dynamic_cast<Figure*>(pressedItem);
+        if (fig != nullptr)
         {
-            ActiveFigure = fig;
+            qDebug() << fig->name() << " was pressed";
+            m_activeFigure = fig;
         }
 
-        if (fld != 0)
+        Field *fld = dynamic_cast<Field*>(pressedItem);
+        if (fld != nullptr)
         {
-            if (ActiveFigure != 0)
+            if (m_activeFigure != 0)
             {
-                ActiveFigure->setPos(fld->pos());
-                ActiveFigure = 0;
+                m_activeFigure->setPos(fld->pos());
+                m_activeFigure = 0;
             }
         }
     }

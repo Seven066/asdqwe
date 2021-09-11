@@ -8,12 +8,12 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    MainWindow(QWidget *parent = nullptr);
 
 private:
     void addMenus();
 
 private:
-    QMenu *menu1, *menu2;
+    QMenu *m_gameMenu;
+    QMenu *m_helpMenu;
 };

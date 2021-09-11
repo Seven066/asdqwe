@@ -1,32 +1,29 @@
 #include "mainwindow.h"
-#include "Board.h"
-#include "BoardView.h"
 
-#include <QGridLayout>
+#include "board.h"
+#include "board_view.h"
+
 #include <QVBoxLayout>
 #include <QLabel>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-{
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     addMenus();
 
-    Board *b = new Board();
-    QWidget *cw = new QWidget();
-    QVBoxLayout *mainLayout = new QVBoxLayout(cw);
-    mainLayout->addWidget(new QLabel("lbl1"));
-    mainLayout->addWidget(b->getView());
-    mainLayout->addWidget(new QLabel("lbl2"));
+    Board *board = new Board();
+    QWidget *dummy = new QWidget();
+    QVBoxLayout *mainLayout = new QVBoxLayout(dummy);
+    mainLayout->addWidget(new QLabel("Black"));
+    mainLayout->addWidget(board->getView());
+    mainLayout->addWidget(new QLabel("White"));
 
-    setCentralWidget(cw);
+    setCentralWidget(dummy);
 }
 
-MainWindow::~MainWindow()
-{
-}
-
-void MainWindow::addMenus()
-{
-    menu1 = menuBar()->addMenu("&File");
-    menu2 = menuBar()->addMenu("&Gile");
+void MainWindow::addMenus() {
+    m_gameMenu = menuBar()->addMenu("&Game");
+    m_helpMenu = menuBar()->addMenu("&Help");
+    m_helpMenu->addAction("About");
+    m_gameMenu->addAction("New");
+    m_gameMenu->addSeparator();
+    m_gameMenu->addAction("Exit", [this](){ close(); });
 }

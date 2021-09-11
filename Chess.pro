@@ -12,18 +12,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
+    board.cpp \
+    board_view.cpp \
+    field.cpp \
+    figure.cpp \
         mainwindow.cpp \
-    Board.cpp \
-    BoardScene.cpp \
-    BoardView.cpp \
-    Field.cpp \
-    Pawn.cpp \
-    IFigure.cpp
+    pawn.cpp
 
 HEADERS  += mainwindow.h \
-    Board.h \
-    BoardScene.h \
-    BoardView.h \
-    Field.h \
-    Pawn.h \
-    IFigure.h
+    board.h \
+    board_view.h \
+    field.h \
+    figure.h \
+    pawn.h
