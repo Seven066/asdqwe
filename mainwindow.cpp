@@ -1,10 +1,8 @@
 #include "mainwindow.h"
-#include "BoardWidget.h"
 #include "Board.h"
 #include "BoardView.h"
 
 #include <QGridLayout>
-#include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
 
@@ -13,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     addMenus();
 
-//    BoardWidget *bw = new BoardWidget();
     Board *b = new Board();
     QWidget *cw = new QWidget();
     QVBoxLayout *mainLayout = new QVBoxLayout(cw);
@@ -26,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-
 }
 
 void MainWindow::addMenus()

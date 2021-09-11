@@ -1,5 +1,4 @@
-#ifndef BOARD_H
-#define BOARD_H
+#pragma once
 
 #include <QList>
 
@@ -21,5 +20,3 @@ private:
     BoardScene *Scene;
     BoardView *View;
 };
-
-#endif // BOARD_H

@@ -1,5 +1,4 @@
-#ifndef IFIGURE_H
-#define IFIGURE_H
+#pragma once
 
 #include "QGraphicsObject"
 
@@ -13,5 +12,3 @@ public:
     virtual QRectF boundingRect() const = 0;
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) = 0;
 };
-
-#endif // IFIGURE_H

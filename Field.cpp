@@ -1,7 +1,7 @@
 #include "Field.h"
 #include <QPainter>
 
-Field::Field() : QGraphicsObject()
+Field::Field(const QColor color) : QGraphicsObject(), Color(color)
 {
     //setFlags(QGraphicsItem::ItemIsMovable);
     Size = 30;
@@ -32,14 +32,3 @@ void Field::setSize(int value)
 {
     Size = value;
 }
-
-QColor Field::getColor() const
-{
-    return Color;
-}
-
-void Field::setColor(const QColor &value)
-{
-    Color = value;
-}
-

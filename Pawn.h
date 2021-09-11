@@ -1,5 +1,4 @@
-#ifndef PAWN_H
-#define PAWN_H
+#pragma once
 
 #include "IFigure.h"
 #include <QPixmap>
@@ -27,5 +26,3 @@ private:
     void nextImg();
     QRectF SourceRect;
 };
-
-#endif // PAWN_H

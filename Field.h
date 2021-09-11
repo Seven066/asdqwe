@@ -1,14 +1,12 @@
-#ifndef FIELD_H
-#define FIELD_H
+#pragma once
 
 #include <QGraphicsObject>
 
 class Field : public QGraphicsObject
 {
 public:
-    Field();
+    Field(const QColor color);
     QColor getColor() const;
-    void setColor(const QColor &value);
 
     int getSize() const;
     void setSize(int value);
@@ -20,5 +18,3 @@ private:
     QColor Color;
     int Size;
 };
-
-#endif // FIELD_H

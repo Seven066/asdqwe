@@ -1,5 +1,4 @@
-#ifndef BOARDVIEW_H
-#define BOARDVIEW_H
+#pragma once
 
 #include <QGraphicsView>
 
@@ -26,5 +25,3 @@ private:
 protected:
     virtual void mousePressEvent(QMouseEvent *event);
 };
-
-#endif // BOARDVIEW_H

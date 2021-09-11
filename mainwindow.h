@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 #include <QMenuBar>
@@ -18,5 +17,3 @@ private:
 private:
     QMenu *menu1, *menu2;
 };
-
-#endif // MAINWINDOW_H

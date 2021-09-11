@@ -1,5 +1,4 @@
-#ifndef BOARDSCENE_H
-#define BOARDSCENE_H
+#pragma once
 
 #include "Board.h"
 #include "QGraphicsScene"
@@ -12,5 +11,3 @@ public:
 private:
     Board *Brd;
 };
-
-#endif // BOARDSCENE_H

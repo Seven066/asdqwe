@@ -37,9 +37,8 @@ void Board::createFields()
             clr = QColor(134,118,102,255);
         else
             clr = QColor(236,220,205,255);
-        Field *f = new Field();
+        Field *f = new Field(clr);
         f->setSize(FIELDSIZE);
-        f->setColor(clr);
         f->setPos((i%8)*f->getSize(), (i/8)*f->getSize());
         Scene->addItem(f);
     }
