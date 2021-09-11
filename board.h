@@ -2,14 +2,21 @@
 
 #include <QGraphicsScene>
 
-class BoardView;
+class Figure;
 
 class Board : public QGraphicsScene {
+
 public:
     Board();
-    BoardView *getView() const;
+    QWidget *widget() const;
 
 private:
-    BoardView *m_view;
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+
+private:
+    QGraphicsView *m_view;
+    Figure *m_activeFigure;
 };
 

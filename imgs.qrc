@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/figures">
+        <file>imgs/AllFigures.png</file>
+    </qresource>
+</RCC>

@@ -2,14 +2,19 @@
 
 #include "QGraphicsObject"
 
-class Figure : public QGraphicsObject
-{
+class Figure : public QGraphicsObject {
+
 public:
-    virtual QString name() = 0;
+    Figure(QPixmap pixmap, int pos);
+    void setPos(int pos);
+    void align();
+
+protected:
+    void paint(QPainter *painter,
+               const QStyleOptionGraphicsItem *option,
+               QWidget *widget) override;
     QRectF boundingRect() const override;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
 protected:
     QPixmap m_pixmap;
-    QRectF m_rect;
 };

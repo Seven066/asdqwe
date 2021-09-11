@@ -13,15 +13,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
     board.cpp \
-    board_view.cpp \
     field.cpp \
     figure.cpp \
-        mainwindow.cpp \
-    pawn.cpp
+        mainwindow.cpp
 
 HEADERS  += mainwindow.h \
     board.h \
-    board_view.h \
     field.h \
-    figure.h \
-    pawn.h
+    figure.h
+
+RESOURCES += \
+    imgs.qrc

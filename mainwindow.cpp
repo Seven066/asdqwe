@@ -1,22 +1,23 @@
 #include "mainwindow.h"
 
 #include "board.h"
-#include "board_view.h"
 
 #include <QVBoxLayout>
 #include <QLabel>
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-    addMenus();
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent) {
 
     Board *board = new Board();
     QWidget *dummy = new QWidget();
     QVBoxLayout *mainLayout = new QVBoxLayout(dummy);
     mainLayout->addWidget(new QLabel("Black"));
-    mainLayout->addWidget(board->getView());
+    mainLayout->addWidget(board->widget());
     mainLayout->addWidget(new QLabel("White"));
-
     setCentralWidget(dummy);
+    setFixedSize(x(), y());
+
+    addMenus();
 }
 
 void MainWindow::addMenus() {
