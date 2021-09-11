@@ -7,27 +7,23 @@
 QT       += core gui widgets
 
 TARGET = Chess
-DESTDIR = $$PWD/
+DESTDIR = $$PWD/bin/
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    BoardWidget.cpp \
     Board.cpp \
     BoardScene.cpp \
     BoardView.cpp \
     Field.cpp \
     Pawn.cpp \
-    IFigure.cpp \
-    Figure.cpp
+    IFigure.cpp
 
 HEADERS  += mainwindow.h \
-    BoardWidget.h \
     Board.h \
     BoardScene.h \
     BoardView.h \
     Field.h \
     Pawn.h \
-    IFigure.h \
-    Figure.h
+    IFigure.h

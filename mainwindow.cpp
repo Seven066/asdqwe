@@ -29,7 +29,7 @@ MainWindow::~MainWindow()
 
 }
 
-MainWindow::addMenus()
+void MainWindow::addMenus()
 {
     menu1 = menuBar()->addMenu("&File");
     menu2 = menuBar()->addMenu("&Gile");

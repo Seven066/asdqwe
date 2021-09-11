@@ -13,7 +13,7 @@ public:
     ~MainWindow();
 
 private:
-    addMenus();
+    void addMenus();
 
 private:
     QMenu *menu1, *menu2;
