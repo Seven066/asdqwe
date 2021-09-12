@@ -12,38 +12,22 @@ Board::Board() {
 
     m_view = new QGraphicsView(this);
     m_view->setFixedSize(FIELDSIZE * 8.5, FIELDSIZE * 8.5);
-    setSceneRect(QRectF(0, 0,
-                        FIELDSIZE * 8, FIELDSIZE * 8));
+    setSceneRect(QRectF(0, 0, FIELDSIZE * 8, FIELDSIZE * 8));
 
     for (int i = 0; i < 64; i++)
         addItem(new Field);
 
-    enum FPix {
-        wking, wqueen, wbishop, wknight, wrook, wpawn,
-        bking, bqueen, bbishop, bknight, brook, bpawn
-    };
+    startPosition();
+}
 
-    for (int i = 8; i > 0; i--)
-        addFigure(wpawn, 56 - i);
-    addFigure(wrook, 56);
-    addFigure(wknight, 57);
-    addFigure(wbishop, 58);
-    addFigure(wqueen, 59);
-    addFigure(wking, 60);
-    addFigure(wbishop, 61);
-    addFigure(wknight, 62);
-    addFigure(wrook, 63);
-
-    addFigure(brook, 0);
-    addFigure(bknight, 1);
-    addFigure(bbishop, 2);
-    addFigure(bqueen, 3);
-    addFigure(bking, 4);
-    addFigure(bbishop, 5);
-    addFigure(bknight, 6);
-    addFigure(brook, 7);
-    for (int i = 8; i > 0; i--)
-        addFigure(bpawn, 16 - i);
+void Board::newGame() {
+    QList<QGraphicsItem *> list = items();
+    for (auto i : list) {
+        if (dynamic_cast<Figure*>(i)) {
+            removeItem(i);
+        }
+    }
+    startPosition();
 }
 
 QWidget *Board::widget() const {
@@ -81,6 +65,35 @@ void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
         }
         m_grabFigure = nullptr;
     }
+}
+
+void Board::startPosition() {
+    enum FPix {
+        wking, wqueen, wbishop, wknight, wrook, wpawn,
+        bking, bqueen, bbishop, bknight, brook, bpawn
+    };
+
+    for (int i = 8; i > 0; i--)
+        addFigure(wpawn, 56 - i);
+    addFigure(wrook, 56);
+    addFigure(wknight, 57);
+    addFigure(wbishop, 58);
+    addFigure(wqueen, 59);
+    addFigure(wking, 60);
+    addFigure(wbishop, 61);
+    addFigure(wknight, 62);
+    addFigure(wrook, 63);
+
+    addFigure(brook, 0);
+    addFigure(bknight, 1);
+    addFigure(bbishop, 2);
+    addFigure(bqueen, 3);
+    addFigure(bking, 4);
+    addFigure(bbishop, 5);
+    addFigure(bknight, 6);
+    addFigure(brook, 7);
+    for (int i = 8; i > 0; i--)
+        addFigure(bpawn, 16 - i);
 }
 
 void Board::addFigure(int id, int pos) {

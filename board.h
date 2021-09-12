@@ -8,6 +8,7 @@ class Board : public QGraphicsScene {
 
 public:
     Board();
+    void newGame();
     QWidget *widget() const;
 
 private:
@@ -15,6 +16,7 @@ private:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
+    void startPosition();
     void addFigure(int id, int pos);
 private:
     QGraphicsView *m_view;
