@@ -11,34 +11,39 @@ Board::Board() {
     setBackgroundBrush(border);
 
     m_view = new QGraphicsView(this);
-    m_view->setFixedSize(FIELDSIZE * 9, FIELDSIZE * 9);
+    m_view->setFixedSize(FIELDSIZE * 8.5, FIELDSIZE * 8.5);
+    setSceneRect(QRectF(0, 0,
+                        FIELDSIZE * 8, FIELDSIZE * 8));
 
     for (int i = 0; i < 64; i++)
         addItem(new Field);
 
-    const int sq = 200;
+    enum FPix {
+        wking, wqueen, wbishop, wknight, wrook, wpawn,
+        bking, bqueen, bbishop, bknight, brook, bpawn
+    };
 
-    QPixmap fp(":/figures/imgs/AllFigures.png");
-    QPixmap p = fp.copy(5 * sq, 0, sq, sq);
-    for (int i = 8; i > 0; i--) {
-        Figure *wpawn = new Figure(p, 56 - i);
-        addItem(wpawn);
-    }
+    for (int i = 8; i > 0; i--)
+        addFigure(wpawn, 56 - i);
+    addFigure(wrook, 56);
+    addFigure(wknight, 57);
+    addFigure(wbishop, 58);
+    addFigure(wqueen, 59);
+    addFigure(wking, 60);
+    addFigure(wbishop, 61);
+    addFigure(wknight, 62);
+    addFigure(wrook, 63);
 
-    p = fp.copy(0, 0, sq, sq);
-    Figure *wking = new Figure(p, 60);
-    addItem(wking);
-
-    p = fp.copy(0, 1 * sq, sq, sq);
-    Figure *bking = new Figure(p, 4);
-    addItem(bking);
-
-    p = fp.copy(5 * sq, sq, sq, sq);
-    for (int i = 8; i > 0; i--) {
-        Figure *bpawn = new Figure(p, 16 - i);
-        addItem(bpawn);
-    }
-
+    addFigure(brook, 0);
+    addFigure(bknight, 1);
+    addFigure(bbishop, 2);
+    addFigure(bqueen, 3);
+    addFigure(bking, 4);
+    addFigure(bbishop, 5);
+    addFigure(bknight, 6);
+    addFigure(brook, 7);
+    for (int i = 8; i > 0; i--)
+        addFigure(bpawn, 16 - i);
 }
 
 QWidget *Board::widget() const {
@@ -50,19 +55,38 @@ void Board::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     for (auto i : list) {
         Figure *f = dynamic_cast<Figure*>(i);
         if (f) {
-            m_activeFigure = f;
+            m_grabFigure = f;
+            i->setZValue(1);
         }
     }
 }
 
 void Board::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-    if (m_activeFigure)
-        static_cast<QGraphicsItem*>(m_activeFigure)->setPos(event->scenePos() - QPointF(FIELDSIZE / 2, FIELDSIZE / 2));
+    if (m_grabFigure) {
+        static_cast<QGraphicsItem*>(m_grabFigure)->
+                setPos(event->scenePos() - QPointF(FIELDSIZE / 2, FIELDSIZE / 2));
+    }
 }
 
 void Board::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
-    if (m_activeFigure) {
-        m_activeFigure->align();
-        m_activeFigure = nullptr;
+    if (m_grabFigure) {
+        m_grabFigure->align();
+        m_grabFigure->setZValue(0);
+        QList<QGraphicsItem*> list = items(event->scenePos());
+        for (auto i : list) {
+            Figure *f = dynamic_cast<Figure*>(i);
+            if (f && f != m_grabFigure) {
+                removeItem(f);
+            }
+        }
+        m_grabFigure = nullptr;
     }
+}
+
+void Board::addFigure(int id, int pos) {
+    static const int sq = 200;
+    static QPixmap fp(":/figures/imgs/AllFigures.png");
+    QPixmap p = fp.copy(QRect(id % 6 * sq,  id / 6 * sq, sq, sq));
+    Figure *f = new Figure(p, pos);
+    addItem(f);
 }
