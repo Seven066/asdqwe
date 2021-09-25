@@ -1,7 +1,8 @@
 #pragma once
 
 #include <QMainWindow>
-#include <QMenuBar>
+
+class QMenuBar;
 
 namespace Gui {
 

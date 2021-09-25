@@ -12,12 +12,15 @@ set(CMAKE_AUTORCC ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 add_subdirectory(gui)
+add_subdirectory(network)
 
 add_executable(${This}
     main.cpp
+    mainwindow.cpp
     imgs.qrc
 )
 
 target_link_libraries(${This}
     Qt5::Widgets
-    gui)
+    gui
+    network)

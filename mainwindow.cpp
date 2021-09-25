@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 
-#include <QDebug>
 #include <QLabel>
-#include <QTimer>
+#include <QMenuBar>
 #include <QVBoxLayout>
 
-#include "chessboard.h"
+#include "gui/chessboard.h"
 
 namespace Gui {
 
