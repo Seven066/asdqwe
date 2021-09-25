@@ -8,7 +8,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
@@ -16,6 +15,7 @@ add_subdirectory(gui)
 
 add_executable(${This}
     main.cpp
+    imgs.qrc
 )
 
 target_link_libraries(${This}
