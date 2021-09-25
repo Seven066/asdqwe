@@ -5,8 +5,7 @@
 #include <QTimer>
 #include <QVBoxLayout>
 
-#include "engines/goofy/goofy.h"
-#include "gui/chessboard.h"
+#include "chessboard.h"
 
 namespace Gui {
 
